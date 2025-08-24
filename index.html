@@ -4,105 +4,109 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiple Glass Effect Cards</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: #1e1e1e;
-      font-family: sans-serif;
-    }
+<style>
+  /* 全局背景漸層 */
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: sans-serif;
+    background: linear-gradient(135deg, #ffffff 0%, #fff2f6 100%); /* 白 → 淡粉色 */
+  }
 
-    .card-container {
-      display: flex;
-      flex-wrap: wrap; /* 多張卡片可自動換行 */
-      gap: 20px;       /* 卡片之間的間距 */
-      justify-content: center;
-    }
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
 
-    .container {
-      color: white;
-      position: relative;
-      font-family: sans-serif;
-    }
+  .container {
+    color: black;
+    position: relative;
+    font-family: sans-serif;
+  }
 
-    .container::before,
-    .container::after {
-      content: "";
-      background-color: #fab5704c;
-      position: absolute;
-    }
+  .container::before,
+  .container::after {
+    content: "";
+    background-color: #ffd9e5; 
+    position: absolute;
+  }
 
-    .container::before {
-      border-radius: 50%;
-      width: 6rem;
-      height: 6rem;
-      top: 30%;
-      right: 7%;
-    }
+  .container::before {
+    border-radius: 50%;
+    width: 6rem;
+    height: 6rem;
+    top: 30%;
+    right: 7%;
+  }
 
-    .container::after {
-      content: "";
-      position: absolute;
-      height: 3rem;
-      top: 8%;
-      right: 5%;
-      border: 1px solid;
-    }
+  .container::after {
+    content: "";
+    position: absolute;
+    height: 3rem;
+    top: 8%;
+    right: 5%;
+    border: 1px solid;
+  }
 
-    /* clickable card */
-    .box {
-      width: 11.875em;
-      height: 15.875em;
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.074);
-      border: 1px solid rgba(255, 255, 255, 0.222);
-      -webkit-backdrop-filter: blur(20px);
-      backdrop-filter: blur(20px);
-      border-radius: 0.7rem;
-      transition: all ease 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-decoration: none;
-      color: white;
-    }
+  /* 卡片樣式 */
+  .box {
+    width: 11.875em;
+    height: 15.875em;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.074);
+    border: 1px solid rgba(255, 255, 255, 0.222);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    border-radius: 0.7rem;
+    transition: all ease 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
 
-    .box .title {
-      font-size: 1.5rem;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-    }
+    /* ✅ 默認粉色外發光 */
+    box-shadow: 0 0 15px 2px rgba(247, 194, 209, 0.3);
+  }
 
-    .box div strong {
-      display: block;
-      margin-bottom: 0.5rem;
-    }
+  .box .title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+  }
 
-    .box div p {
-      margin: 0;
-      font-size: 0.9em;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-    }
+  .box div strong {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
 
-    .box div span {
-      font-size: 0.7rem;
-      font-weight: 300;
-    }
+  .box div p {
+    margin: 0;
+    font-size: 0.9em;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
 
-    .box div span:nth-child(3) {
-      font-weight: 500;
-      margin-right: 0.2rem;
-    }
+  .box div span {
+    font-size: 0.7rem;
+    font-weight: 300;
+  }
 
-    .box:hover {
-      box-shadow: 0px 0px 20px 1px #ffbb763f;
-      border: 1px solid rgba(255, 255, 255, 0.454);
-      transform: scale(1.05);
-    }
-  </style>
+  .box div span:nth-child(3) {
+    font-weight: 500;
+    margin-right: 0.2rem;
+  }
+
+  .box:hover {
+    box-shadow: 0px 0px 20px 1px #f7c2d13f;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+</style>
 </head>
 <body>
   <div class="card-container">
