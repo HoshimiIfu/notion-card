@@ -5,12 +5,181 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiple Glass Effect Cards</title>
   <style>
-    /* 這裡放你的 CSS （你上面的代碼可以直接貼進來） */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1e1e1e;
+      font-family: sans-serif;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap; /* 多張卡片可自動換行 */
+      gap: 20px;       /* 卡片之間的間距 */
+      justify-content: center;
+    }
+
+    .container {
+      color: white;
+      position: relative;
+      font-family: sans-serif;
+    }
+
+    .container::before,
+    .container::after {
+      content: "";
+      background-color: #fab5704c;
+      position: absolute;
+    }
+
+    .container::before {
+      border-radius: 50%;
+      width: 6rem;
+      height: 6rem;
+      top: 30%;
+      right: 7%;
+    }
+
+    .container::after {
+      content: "";
+      position: absolute;
+      height: 3rem;
+      top: 8%;
+      right: 5%;
+      border: 1px solid;
+    }
+
+    /* clickable card */
+    .box {
+      width: 11.875em;
+      height: 15.875em;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.074);
+      border: 1px solid rgba(255, 255, 255, 0.222);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 0.7rem;
+      transition: all ease 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: white;
+    }
+
+    .box .title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
+
+    .box div strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .box div p {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .box div span {
+      font-size: 0.7rem;
+      font-weight: 300;
+    }
+
+    .box div span:nth-child(3) {
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
+
+    .box:hover {
+      box-shadow: 0px 0px 20px 1px #ffbb763f;
+      border: 1px solid rgba(255, 255, 255, 0.454);
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <div class="card-container">
-    <!-- 卡片內容貼這裡 -->
+    <!-- 卡片 1 -->
+    <div class="container">
+      <a href="Yhttps://www.notion.so/joshu0a926c/2541531d06128085866dcf67a462b5be?v=2541531d06128060b871000cfcfa21cf&source=copy_link" class="box">
+        <span class="title">Concept</span>
+        <div>
+          <strong>概    念</strong>
+          <p>這個世界的構成。</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- 卡片 2 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2531531d06128061887bc48607a83bc4?v=2531531d061280029977000cdd297cf4&source=copy_link" class="box">
+        <span class="title">Area</span>
+        <div>
+          <strong>地    區</strong>
+          <p>這個世界的各個部分。</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- 卡片 3 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612803a9bdaf6bdfd6c8988?v=2531531d0612803da30d000cf1fa354d&source=copy_link" class="box">
+        <span class="title">Race</span>
+        <div>
+          <strong>種  族</strong>
+          <p>相握的手是不同的體溫。</p>
+        </div>
+      </a>
+    </div>
+		
+		<!-- 卡片 4 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2531531d06128019a12af98fb4b5d133?v=2531531d0612809ea6bc000c366ba5e4&source=copy_link" class="box">
+        <span class="title">Job</span>
+        <div>
+          <strong>職    業</strong>
+          <p>弱肉強食。</p>
+        </div>
+      </a>
+    </div>
+		
+		    <!-- 卡片 5 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2561531d061280d19aabc534c1120cf8?v=2561531d061280e4bbf5000c1bc0ec06&source=copy_link" class="box">
+        <span class="title">Story</span>
+        <div>
+          <strong>故    事</strong>
+          <p>箱庭中綻放的花朵。</p>
+        </div>
+      </a>
+    </div>
+				    <!-- 卡片 6 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612809ca9b5c2c385c1ad21?v=2531531d0612808eaf1a000c32a497bc&source=copy_link" class="box">
+        <span class="title">Organize</span>
+        <div>
+          <strong>組    織</strong>
+          <p>活下去。</p>
+        </div>
+      </a>
+    </div>
+						    <!-- 卡片 7 -->
+    <div class="container">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612805c94d7ef0a3d29ca88?v=2531531d06128030bc72000ceefbace7&source=copy_link" class="box">
+        <span class="title">Character</span>
+        <div>
+          <strong>角  色</strong>
+          <p>舞台上的是誰？</p>
+        </div>
+      </a>
+    </div>
   </div>
 </body>
 </html>
