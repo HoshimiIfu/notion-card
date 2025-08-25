@@ -1,118 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Multiple Glass Effect Cards</title>
-<style>
-  /* 全局背景漸層 */
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: sans-serif;
-    background: linear-gradient(1to bottom, #ffffff 0%, #fff2f6 100%); /* 白 → 淡粉色 */
-  }
+  <style>
+    /* 全局背景漸層（垂直） */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #ffffff 0%, #fff2f6 100%);
+    }
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      padding: 20px;
+    }
 
-  .container {
-    color: #e67c9d;
-    position: relative;
-    font-family: sans-serif;
-  }
+    .container {
+      color: #e67c9d;
+      position: relative;
+      font-family: sans-serif;
+      z-index: 0; /* 讓卡片能蓋過裝飾 */
+    }
 
-  .container::before,
-  .container::after {
-    content: "";
-    background-color: #ffd9e5; 
-    position: absolute;
-  }
+    .container::before,
+    .container::after {
+      content: "";
+      background-color: #ffd9e5;
+      position: absolute;
+      pointer-events: none; /* ✅ 不攔截點擊 */
+    }
 
-  .container::before {
-    border-radius: 50%;
-    width: 6rem;
-    height: 6rem;
-    top: 30%;
-    right: 7%;
-  }
+    .container::before {
+      border-radius: 50%;
+      width: 6rem;
+      height: 6rem;
+      top: 30%;
+      right: 7%;
+    }
 
-  .container::after {
-    content: "";
-    position: absolute;
-    height: 3rem;
-    top: 8%;
-    right: 5%;
-    border: 1px solid;
-  }
+    .container::after {
+      height: 3rem;
+      top: 8%;
+      right: 5%;
+      border: 1px solid;
+    }
 
-  /* 卡片樣式 */
-  .box {
-    width: 11.875em;
-    height: 15.875em;
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.074);
-    border: 1px solid rgba(255, 255, 255, 0.222);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    border-radius: 0.7rem;
-    transition: all ease 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-    color: #e67c9d;
+    /* 卡片樣式（a.box） */
+    .box {
+      width: 11.875em;
+      height: 15.875em;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.074);
+      border: 1px solid rgba(255, 255, 255, 0.222);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-radius: 0.7rem;
+      transition: all ease 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: #e67c9d;
+      position: relative;
+      z-index: 1;            /* ✅ 蓋過裝飾 */
+      cursor: pointer;
 
-    /* ✅ 默認粉色外發光 */
-    box-shadow: 0 0 15px 2px rgba(247, 194, 209, 0.3);
-  }
+      /* 默認粉色外發光 */
+      box-shadow: 0 0 15px 2px rgba(247, 194, 209, 0.3);
+    }
 
-  .box .title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-  }
+    .box .title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+    }
 
-  .box div strong {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
+    .box div strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
 
-  .box div p {
-    margin: 0;
-    font-size: 0.9em;
-    font-weight: 300;
-    letter-spacing: 0.1em;
-  }
+    .box div p {
+      margin: 0;
+      font-size: 0.9em;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
 
-  .box div span {
-    font-size: 0.7rem;
-    font-weight: 300;
-  }
+    .box div span {
+      font-size: 0.7rem;
+      font-weight: 300;
+    }
 
-  .box div span:nth-child(3) {
-    font-weight: 500;
-    margin-right: 0.2rem;
-  }
+    .box div span:nth-child(3) {
+      font-weight: 500;
+      margin-right: 0.2rem;
+    }
 
-  .box:hover {
-    box-shadow: 0px 0px 20px 1px #f7c2d13f;
-    border: 1px solid rgba(0, 0, 0, 0.4);
-    transform: scale(1.05);
-  }
-</style>
+    .box:hover {
+      box-shadow: 0 0 20px 1px #f7c2d13f;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      transform: scale(1.05);
+    }
+  </style>
 </head>
 <body>
   <div class="card-container">
     <!-- 卡片 1 -->
     <div class="container">
-      <a href="Yhttps://www.notion.so/joshu0a926c/2541531d06128085866dcf67a462b5be?v=2541531d06128060b871000cfcfa21cf&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2541531d06128085866dcf67a462b5be?v=2541531d06128060b871000cfcfa21cf&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Concept</span>
         <div>
           <strong>概    念</strong>
@@ -123,7 +129,8 @@
 
     <!-- 卡片 2 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2531531d06128061887bc48607a83bc4?v=2531531d061280029977000cdd297cf4&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2531531d06128061887bc48607a83bc4?v=2531531d061280029977000cdd297cf4&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Area</span>
         <div>
           <strong>地    區</strong>
@@ -134,7 +141,8 @@
 
     <!-- 卡片 3 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2531531d0612803a9bdaf6bdfd6c8988?v=2531531d0612803da30d000cf1fa354d&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612803a9bdaf6bdfd6c8988?v=2531531d0612803da30d000cf1fa354d&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Race</span>
         <div>
           <strong>種  族</strong>
@@ -142,10 +150,11 @@
         </div>
       </a>
     </div>
-		
-		<!-- 卡片 4 -->
+
+    <!-- 卡片 4 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2531531d06128019a12af98fb4b5d133?v=2531531d0612809ea6bc000c366ba5e4&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2531531d06128019a12af98fb4b5d133?v=2531531d0612809ea6bc000c366ba5e4&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Job</span>
         <div>
           <strong>職    業</strong>
@@ -153,10 +162,11 @@
         </div>
       </a>
     </div>
-		
-		    <!-- 卡片 5 -->
+
+    <!-- 卡片 5 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2561531d061280d19aabc534c1120cf8?v=2561531d061280e4bbf5000c1bc0ec06&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2561531d061280d19aabc534c1120cf8?v=2561531d061280e4bbf5000c1bc0ec06&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Story</span>
         <div>
           <strong>故    事</strong>
@@ -164,9 +174,11 @@
         </div>
       </a>
     </div>
-				    <!-- 卡片 6 -->
+
+    <!-- 卡片 6 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2531531d0612809ca9b5c2c385c1ad21?v=2531531d0612808eaf1a000c32a497bc&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612809ca9b5c2c385c1ad21?v=2531531d0612808eaf1a000c32a497bc&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Organize</span>
         <div>
           <strong>組    織</strong>
@@ -174,9 +186,11 @@
         </div>
       </a>
     </div>
-						    <!-- 卡片 7 -->
+
+    <!-- 卡片 7 -->
     <div class="container">
-      <a href="https://www.notion.so/joshu0a926c/2531531d0612805c94d7ef0a3d29ca88?v=2531531d06128030bc72000ceefbace7&source=copy_link" class="box">
+      <a href="https://www.notion.so/joshu0a926c/2531531d0612805c94d7ef0a3d29ca88?v=2531531d06128030bc72000ceefbace7&source=copy_link"
+         class="box" target="_blank" rel="noopener noreferrer">
         <span class="title">Character</span>
         <div>
           <strong>角  色</strong>
